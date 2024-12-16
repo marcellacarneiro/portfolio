@@ -224,6 +224,10 @@ header .container {
 
 /* Contact section */
 
+#contact-section {
+    height: 80vh;
+}
+
 .contact-section__contacts {
     display: flex;
     justify-content: center;
@@ -257,7 +261,7 @@ header .container {
 /* Footer */
 
 footer {
-    height: 15vh;
+    height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
