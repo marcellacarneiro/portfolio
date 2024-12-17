@@ -245,6 +245,8 @@ header .container {
     grid-template-columns: repeat(4, 1fr);
     row-gap: 2rem;
     column-gap: 2rem;
+    align-items: center;
+    justify-items: center;
 }
 
 .skill-icons > img {

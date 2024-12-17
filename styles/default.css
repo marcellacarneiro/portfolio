@@ -5,7 +5,7 @@
     /* colors */
     --primary: #e63462;
     --secondary: #f9c22e;
-    --dark: #0a0104;
+    --dark: #040101;
     --light: #dedede;
     --gradient: linear-gradient(90deg, rgba(230, 52, 98, 1) 13%, rgba(249, 194, 46, 1) 84%);
     --gradient-reverse-diagonal: linear-gradient(315deg, rgba(230, 52, 98, 1) 13%, rgba(249, 194, 46, 1) 84%);
