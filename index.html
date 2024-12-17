@@ -18,12 +18,19 @@
             </div>
             <nav class="menu-container">
                 <ul class="menu">
-                    <li class="menu-item"><a href="#hero-section">início</a></li>
-                    <li class="menu-item"><a href="#about-section">sobre mim</a></li>
-                    <li class="menu-item"><a href="#projects-section">projetos</a></li>
-                    <li class="menu-item"><a href="#contact-section">contato</a></li>
+                    <!-- <li class="menu-item"><a href="#hero-section">início</a></li> -->
+                    <li class="menu-item"><a href="#about-section" onclick="toggleMenu()">sobre mim</a></li>
+                    <li class="menu-item"><a href="#projects-section" onclick="toggleMenu()">projetos</a></li>
+                    <li class="menu-item"><a href="#contact-section" onclick="toggleMenu()">contato</a></li>
                 </ul>
             </nav>
+            <div class="menu-hamburger" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+
         </div>
     </header>
 
@@ -46,14 +53,14 @@
                 </div>
                 <div class="actions-container">
                     <a href="#contact-section"><button class="actions-button">contato</button></a>
-                    <button class="actions-button">baixar cv</button>
+                    <a href="#"><button class="actions-button">baixar cv</button></a>
                 </div>
             </div>
         </section>
         <!-- About section -->
         <section id="about-section">
             <div class="container">
-                <h2 class="subtitle typewriter"><span>.</span >sobreMim</h2>
+                <h2 class="subtitle typewriter"><span>.</span>sobreMim</h2>
                 <div class="about-container">
                     <div class="about-section__img">
                         <img src="./assets/profile-pic.jpg" alt="">
@@ -71,12 +78,12 @@
                             nesciunt quisquam recusandae accusantium voluptas voluptate totam laborum quo quidem maxime
                             esse officia non adipisci officiis.
                         </p>
-                        <!-- <p>
+                        <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A temporibus, quis amet harum
                             animi
                             nesciunt quisquam recusandae accusantium voluptas voluptate totam laborum quo quidem maxime
                             esse officia non adipisci officiis.
-                        </p> -->
+                        </p>
                         <!-- <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A temporibus, quis amet harum
                             animi
@@ -99,7 +106,7 @@
         </section>
         <section id="projects-section">
             <div class="container">
-                <h2 class="subtitle typewriter"><span>.</span >projetos</h2>
+                <h2 class="subtitle typewriter"><span>.</span>projetos</h2>
                 <div class="projects-section__grid">
                     <div></div>
                     <div></div>
@@ -112,30 +119,30 @@
         </section>
         <section id="contact-section">
             <div class="container">
-                <h2 class="subtitle typewriter"><span>.</span >contato</h2>
-                    <div class="contact-section__contacts">
-                        <a href="https://www.linkedin.com/in/marcella-carneiro/" target="_blank" class="contact">
-                            <img src="./assets/linkedin-logo.png" alt="">
-                            <div>
-                                <p>LinkedIn</p>
-                                <p>@marcellacarneiro</p>
-                            </div>
-                        </a>
-                        <a href="https://github.com/marcellacarneiro" target="_blank" class="contact">
-                            <img src="./assets/github-logo.png" alt="">
-                            <div>
-                                <p>GitHub</p>
-                                <p>@marcellacarneiro</p>
-                            </div>
-                        </a>
-                        <a href="mailto:marcella.ferreira028@gmail.com" target="_blank" class="contact">
-                            <img src="./assets/gmail-logo.png" alt="">
-                            <div>
-                                <p>E-mail</p>
-                                <p>marcella.ferreira028@gmail.com</p>
-                            </div>
-                        </a>
-                    </div>
+                <h2 class="subtitle typewriter"><span>.</span>contato</h2>
+                <div class="contact-section__contacts">
+                    <a href="https://www.linkedin.com/in/marcella-carneiro/" target="_blank" class="contact">
+                        <img src="./assets/linkedin-logo.png" alt="">
+                        <div>
+                            <p>LinkedIn</p>
+                            <p>@marcellacarneiro</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/marcellacarneiro" target="_blank" class="contact">
+                        <img src="./assets/github-logo.png" alt="">
+                        <div>
+                            <p>GitHub</p>
+                            <p>@marcellacarneiro</p>
+                        </div>
+                    </a>
+                    <a href="mailto:marcella.ferreira028@gmail.com" target="_blank" class="contact">
+                        <img src="./assets/gmail-logo.png" alt="">
+                        <div>
+                            <p>E-mail</p>
+                            <p>marcella.ferreira028@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
