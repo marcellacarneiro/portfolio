@@ -20,7 +20,9 @@
     width: 110px;
 }
 
-/* Header */
+
+/* ------ Header ------ */
+
 header .container {
     flex-direction: row;
     justify-content: space-between;
@@ -60,6 +62,26 @@ header .container {
 
 .menu-item {
     text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-container.active .menu-item {
+    opacity: 0; 
+    transform: translateX(-100%);
+    animation: slideIn 0.5s ease forwards;
+}
+
+.menu-container.active .menu-item:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.menu-container.active .menu-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+.menu-container.active .menu-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
+.menu-container.active .menu-item:nth-child(4) {
+    animation-delay: 0.8s;
 }
 
 .menu-item a {
@@ -108,48 +130,18 @@ header .container {
 .menu-container.active + .menu-hamburger .bar:nth-child(1) {
     transform: rotate(45deg) translateY(7px) translateX(7px);
 }
+
 .menu-container.active + .menu-hamburger .bar:nth-child(2) {
     display: none;
 }
+
 .menu-container.active + .menu-hamburger .bar:nth-child(3) {
     transform: rotate(-45deg) translateY(-5px) translateX(5px);
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
-.menu-container.active .menu-item {
-    opacity: 0; 
-    transform: translateX(-100%);
-    animation: slideIn 0.5s ease forwards;
-}
+/* ------ Hero Section ------ */
 
-.menu-container.active .menu-item:nth-child(1) {
-    animation-delay: 0.2s;
-}
-.menu-container.active .menu-item:nth-child(2) {
-    animation-delay: 0.4s;
-}
-.menu-container.active .menu-item:nth-child(3) {
-    animation-delay: 0.6s;
-}
-.menu-container.active .menu-item:nth-child(4) {
-    animation-delay: 0.8s;
-}
-
-.menu-item {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Hero Section */
 #hero-section .container {
     height: 100%;
     gap: 5rem;
@@ -197,7 +189,6 @@ header .container {
     justify-content: flex-end;
 }
 
-/* Actions */
 .actions-container {
     display: flex;
     flex-direction: column;
@@ -243,7 +234,9 @@ header .container {
     left: 0;
 }
 
-/* About Section */
+
+/* ------ About Section ------ */
+ 
 .about-container {
     flex-direction: column;
     align-items: center;
@@ -299,7 +292,9 @@ header .container {
     width: clamp(30px, 10vw, 45px);
 }
 
-/* Projects Section */
+
+/* ------ Projects Section ------ */
+
 .projects-section__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
@@ -325,7 +320,9 @@ header .container {
     opacity: 0.5;
 }
 
-/* Contact Section */
+
+/* ------ Contact Section ------ */
+
 .contact-section__contacts {
     display: flex;
     flex-direction: column;
@@ -356,7 +353,9 @@ header .container {
     font-weight: bold;
 }
 
-/* Footer */
+
+/* ------ Footer ------ */
+
 footer {
     height: 15vh;
     display: flex;
@@ -367,7 +366,9 @@ footer {
     text-align: center;
 }
 
-/* Media Queries */
+
+/* ------ Media Queries ------ */
+
 @media (min-width: 768px) {
     .no-scroll {
         overflow: visible;
