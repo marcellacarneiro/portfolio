@@ -34,17 +34,14 @@ header .container {
     position: absolute;
     top: 15vh;
     left: 0;
-    /* gap: 3rem; */
     height: 70vh;
     width: 100%;
-    /* background-color: var(--dark); */
 }
 
 .menu {
     display: flex;
     flex-direction: column;
     gap: 5rem;
-    /* justify-content: center; */
 }
 
 .active {
@@ -53,9 +50,9 @@ header .container {
     z-index: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
-    /* padding-top: 5rem; */
+    align-items: flex-start;
+    height: 85vh;
+    padding-top: 5rem;
 }
 
 .no-scroll {
@@ -69,7 +66,7 @@ header .container {
 
 .menu-item a {
     position: relative;
-    font-size: var(--lg);
+    font-size: var(--sm);
     font-weight: 500;
     text-align: center;
 }
@@ -180,7 +177,7 @@ header .container {
 
 .actions-button {
     position: relative;
-    font-size: var(--md);
+    font-size: var(--sm);
     color: var(--light);
     border: 2px solid var(--light);
     background: transparent;
@@ -253,6 +250,7 @@ header .container {
 }
 
 .about-section__text p {
+    font-size: var(--sm);
     text-align: justify;
     line-height: 1.5rem;
     margin-bottom: 1rem;
@@ -260,13 +258,15 @@ header .container {
 
 .skill-icons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, 2.8rem);
     row-gap: 2rem;
     column-gap: 2rem;
+    justify-content: space-between;
 }
 
 .skill-icons > img {
-    width: clamp(30px, 10vw, 45px);
+    width: clamp(1.875rem, 10vw, 2.8rem);
+    flex-wrap: wrap;
 }
 
 /* Projects Section */
@@ -316,13 +316,13 @@ header .container {
 
 .contact div p {
     text-align: center;
-    font-size: var(--md);
+    font-size: var(--sm);
     margin: 0.75rem 0 0;
 }
 
 .contact div p:nth-child(1) {
     margin-top: 1.5rem;
-    font-size: var(--lg);
+    font-size: var(--md);
     font-weight: bold;
 }
 
@@ -346,15 +346,12 @@ footer {
         padding: 4rem 0;
     }
 
-    .skill-icons {
-        grid-template-columns: repeat(8, 1fr);
-    }
-
     .menu-container {
         display: flex;
         position: static;
         width: auto;
         height: auto;
+        background: transparent;
     }
 
     .menu {
@@ -376,11 +373,6 @@ footer {
         display: none;
     }
 
-    .contact-section__contacts {
-        flex-direction: row;
-        justify-content: center;
-    }
-
     .contact {
         margin-top: 3rem;
     }
@@ -400,11 +392,18 @@ footer {
 
     .about-container {
         flex-direction: row;
+        align-items: flex-start;
         justify-content: space-between;
         width: 100%;
     }
 
     .about-section__text {
         width: 70%;
+        margin: 0;
+    }
+    
+    .contact-section__contacts {
+        flex-direction: row;
+        justify-content: center;
     }
 }
