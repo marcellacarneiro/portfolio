@@ -270,29 +270,54 @@ header .container {
 }
 
 /* Projects Section */
+#projects-section .container {
+
+}
+
 .projects-section__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-areas:
+        'p1'
+        'p2'
+        'p3'
+        'p4'
+        'p5'
+        'p6';
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    /* grid-template-columns: repeat(auto-fit, 16.875rem); */
+    /*
     row-gap: 2rem;
-    column-gap: 2.5rem;
-    justify-content: center;
+    column-gap: 2.6rem; */
+    gap: 2rem;
+    /* justify-content: center; */
     margin: 0 auto;
     width: 100%;
 }
 
-.projects-section__grid div {
-    background-image: url('../assets/project-screenshot.png');
+.projects-section__grid .project {
+    /* visibility: hidden; */
+    background-color: #f4f4f440;
+    /* background-image: url('../assets/project-screenshot.png'); */
     background-size: cover;
     background-position: center;
-    min-height: 167px;
+    height: 9.375rem;
+    width: 16.875rem;
+    justify-self: center;
     border-radius: 8px;
     transition: color 0.4s, transform 0.3s ease;
     cursor: pointer;
 }
 
-.projects-section__grid div:hover {
-    transform: scale(1.2);
+.projects-section__grid .project:hover {
+    transform: scale(1.15);
     opacity: 0.5;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
 }
 
 /* Contact Section */
@@ -373,6 +398,15 @@ footer {
         display: none;
     }
 
+    .projects-section__grid {
+        grid-template-areas:
+            "p1 p2"
+            "p3 p4"
+            "p5 p6";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
     .contact {
         margin-top: 3rem;
     }
@@ -401,7 +435,15 @@ footer {
         width: 70%;
         margin: 0;
     }
-    
+
+    .projects-section__grid {
+        grid-template-areas:
+            "p1 p2 p3"
+            "p4 p5 p6";
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr;
+    }
+
     .contact-section__contacts {
         flex-direction: row;
         justify-content: center;
