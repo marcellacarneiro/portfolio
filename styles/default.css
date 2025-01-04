@@ -30,13 +30,23 @@ html {
     color: var(--light);
 }
 
-header {
-    background: linear-gradient(0deg, transparent, #e6346210);
-}
-
 body {
     background-color: var(--dark);
     min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(0deg, transparent, #e6346210);
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background-color: inherit;
+    z-index: 1;
+}
+
+main {
+    position: relative;
+    top: 15vh;
 }
 
 section {
