@@ -270,35 +270,16 @@ header .container {
 }
 
 /* Projects Section */
-#projects-section .container {
-
-}
-
 .projects-section__grid {
     display: grid;
-    grid-template-areas:
-        'p1'
-        'p2'
-        'p3'
-        'p4'
-        'p5'
-        'p6';
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
-    /* grid-template-columns: repeat(auto-fit, 16.875rem); */
-    /*
-    row-gap: 2rem;
-    column-gap: 2.6rem; */
     gap: 2rem;
-    /* justify-content: center; */
     margin: 0 auto;
     width: 100%;
 }
 
 .projects-section__grid .project {
-    /* visibility: hidden; */
     background-color: #f4f4f440;
-    /* background-image: url('../assets/project-screenshot.png'); */
     background-size: cover;
     background-position: center;
     height: 9.375rem;
@@ -317,7 +298,20 @@ header .container {
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+}
+
+.pagination button {
+    background: transparent;
+    border: 1.5px solid #fff;
+    border-radius: 20px;
+    padding: 0.45rem 0.75rem;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #fff;
+    color: #000;
 }
 
 /* Contact Section */
@@ -399,10 +393,6 @@ footer {
     }
 
     .projects-section__grid {
-        grid-template-areas:
-            "p1 p2"
-            "p3 p4"
-            "p5 p6";
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
     }
@@ -437,9 +427,6 @@ footer {
     }
 
     .projects-section__grid {
-        grid-template-areas:
-            "p1 p2 p3"
-            "p4 p5 p6";
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr 1fr;
     }
