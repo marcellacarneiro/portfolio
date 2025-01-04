@@ -291,14 +291,51 @@ header .container {
     height: 9.375rem;
     width: 16.875rem;
     justify-self: center;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     transition: color 0.4s, transform 0.3s ease;
-    cursor: pointer;
+    position: relative;
+}
+.projects-section__grid .project:hover {
+    transform: scale(1.1);
 }
 
-.projects-section__grid .project:hover {
-    transform: scale(1.15);
-    opacity: 0.5;
+.project div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: inherit;
+    gap: 0.5rem;
+    backdrop-filter: blur(1px) brightness(30%);
+    -webkit-backdrop-filter: blur(1px);
+    width: 100%;
+    height: 100%;
+}
+
+.project span,
+button {
+    color: #fff;
+}
+
+.project span {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: default;
+}
+
+.project button {
+    background: transparent;
+    border: 1.5px solid #fff;
+    border-radius: 20px;
+    padding: 0.35rem 0.55rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.project button:hover {
+    background-color: #fff;
+    color: #000;
 }
 
 .pagination {
@@ -315,7 +352,7 @@ header .container {
     cursor: pointer;
 }
 
-.pagination button:hover {
+.pagination button:not(:disabled):hover {
     background-color: #fff;
     color: #000;
 }
@@ -436,7 +473,7 @@ footer {
 
     .projects-section__grid {
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr;
     }
 
     .contact-section__contacts {

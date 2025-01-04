@@ -13,20 +13,27 @@ document.addEventListener('DOMContentLoaded', async function () {
     const projectsContainer = document.getElementById('projects-container');
     const loadMoreButton = document.getElementById('load-more-button');
     let offset = 0;
-    const limit = 6;
+    let limit = 6;
+    let initialLoad = true;
+    if (window.innerWidth < 768) {
+        limit = 3;
+    }
 
     const loadProjects = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/api/repos?offset=${offset}&limit=${limit}`);
+            const response = await fetch(`http://192.168.15.8:3001/api/repos?offset=${offset}&limit=${limit}`);
             const data = await response.json();
 
-            if (data.data.length === 0) {
-                loadMoreButton.disabled = true;
-            }
-
             for (const project of data.data) {
-                const div = document.createElement('div');
-                div.classList.add('project');
+                const projectDiv = document.createElement('div');
+                projectDiv.classList.add('project');
+
+                projectDiv.innerHTML = `
+                    <div>
+                        <span>${project.name}</span>
+                        <button type="button" id="project-details-button">ver detalhes</button>
+                    </div>
+                `;
 
                 if (project.image && project.image.data && project.image.data.data) {
                     const blob = new Blob([new Uint8Array(project.image.data.data)], {
@@ -34,12 +41,20 @@ document.addEventListener('DOMContentLoaded', async function () {
                     });
                     const url = URL.createObjectURL(blob);
 
-                    div.style.backgroundImage = `url(${url})`;
+                    projectDiv.style.backgroundImage = `url(${url})`;
                 }
 
-                projectsContainer.appendChild(div);
+                projectsContainer.appendChild(projectDiv);
             }
             offset += limit;
+            if (initialLoad) {
+                limit = 3;
+                initialLoad = false;
+            }
+
+            if (offset >= data.totalRepos) {
+                loadMoreButton.style.display = 'none';
+            }
         } catch (error) {
             console.error(error);
         }
