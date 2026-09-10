@@ -150,7 +150,7 @@ header .container {
 }
 
 .hero-section__img img {
-    width: clamp(150px, 50vw, 300px);
+    width: clamp(175px, 50vw, 350px);
 }
 
 .title span {
@@ -191,7 +191,9 @@ header .container {
     border-radius: 25px;
     letter-spacing: 1px;
     overflow: hidden;
-    transition: color 0.4s, transform 0.3s ease;
+    transition:
+        color 0.4s,
+        transform 0.3s ease;
     cursor: pointer;
     min-width: 200px;
 }
@@ -231,13 +233,13 @@ header .container {
 }
 
 .subtitle span {
-    color: var(--secondary);
+    color: var(--primary);
 }
 
 .about-section__img {
     padding: 5px;
-    width: 230px;
-    height: 230px;
+    width: 235px;
+    height: 235px;
     position: relative;
     border-radius: 50% 50% 5% 50%;
     background: var(--gradient-reverse-diagonal);
@@ -259,7 +261,7 @@ header .container {
     font-size: var(--sm);
     text-align: justify;
     line-height: 1.75rem;
-    letter-spacing: .75px;
+    letter-spacing: 0.75px;
     margin-bottom: 1rem;
 }
 
@@ -288,13 +290,14 @@ header .container {
 .projects-section__grid .project {
     height: 12rem;
     width: 16.875rem;
+    padding: 4px;
     justify-self: center;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     transition: color 0.4s, transform 0.3s ease;
     position: relative;
-    box-shadow: -1.5px 1.5px 0px 0px var(--primary);
-    border-top: 1.5px solid var(--secondary);
-    border-right: 1.5px solid var(--secondary);
+    border: 1.35px solid transparent;
+    background: linear-gradient(#0a0104, #0a0104) padding-box, var(--gradient) border-box;
+    box-shadow: -9px 8px 0px 0px rgba(230, 52, 98, 0.15);
 }
 
 .project-img-preview {
@@ -325,7 +328,7 @@ header .container {
     gap: 0.5rem;
     width: 100%;
     padding: 0.75rem;
-    border-top: 2px solid transparent;
+    border-top: 1.75px solid var(--primary);
     border-image: var(--gradient);
     border-image-slice: 1;
 }
@@ -449,7 +452,7 @@ dialog {
     width: 24px;
     height: 24px;
     cursor: pointer;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
 }
 
 .close-modal .bar:nth-child(1) {
@@ -497,7 +500,7 @@ dialog {
     color: var(--light);
 }
 
-.project-details__text p{
+.project-details__text p {
     color: #f9c22e;
 }
 
@@ -509,7 +512,7 @@ dialog {
 
 .project-details__demo img {
     width: 100%;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 }
 
 .project-details__actions {
@@ -529,7 +532,7 @@ dialog {
     width: 100%;
 }
 
-.project-details__actions button:hover{
+.project-details__actions button:hover {
     background-color: var(--light);
     color: var(--dark);
 }
@@ -552,7 +555,7 @@ footer {
     height: 15vh;
     position: relative;
     bottom: -15vh;
-    background: linear-gradient(180deg, transparent, #e6346220);
+    background: linear-gradient(180deg, transparent, rgb(230 52 98 / 5%));
     color: var(--light);
     text-align: center;
 }
