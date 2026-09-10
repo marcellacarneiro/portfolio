@@ -9,60 +9,45 @@ function toggleMenu() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const projectsData = [
-        {
-            id: 1,
-            name: '/ portfolio',
-            description: `Este projeto consiste na criação do meu portfólio pessoal, com o objetivo de exibir meus projetos e habilidades.
-            
-O design foi feito aplicando o conceito de mobile first, priorizando a experiência em dispositivos móveis e garantindo que a interface fosse responsiva e fluida.`,
-            languages: ['HTML', 'CSS', 'JavaScript'],
-            figmaUrl: 'https://www.figma.com/design/jW7XynZKV5eyMJhOD8p80a/Untitled?node-id=0-1&t=YuoU4oMGeM9LWPS3-1',
-            githubUrl: 'https://github.com/marcellacarneiro/portfolio',
-            deployUrl: '',
-            image: '../assets/previews/images/portfolio-image.png',
-            demo: '../assets/previews/demos/portfolio-demo.gif',
-        },
-        {
-            id: 2,
-            name: '/ my-tasks',
-            description: `Um aplicativo de gerenciamento de tarefas projetado para ser simples e intuitivo. Com uma interface minimalista, o MyTasks oferece funcionalidades essenciais, como:
+const API_BASE_URL = 'http://127.0.0.1:3001/api/repos';
+let limit = window.innerWidth < 768 ? 3 : 6;
 
-• Adicionar novas tarefas.
-• Marcar tarefas como concluídas ou pendentes.
-• Excluir tarefas.
-• Visualizar detalhes de cada tarefa.`,
-            languages: ['HTML', 'CSS', 'JavaScript', 'React'],
-            figmaUrl: 'https://www.figma.com/design/vZcNxxPthTxwsephqwfJlT/Untitled?node-id=0-1&t=EptUPnquNUv5TYwi-1',
-            githubUrl: 'https://github.com/marcellacarneiro/my-tasks',
-            deployUrl: 'https://my-tasks-chi.vercel.app/',
-            image: '../assets/previews/images/mytasks-image.png',
-            demo: '../assets/previews/demos/mytasks-demo.gif',
-        },
-    ];
+const apiFetch = async () => {
+    const response = await fetch(`${API_BASE_URL}?offset=0&limit=${limit}`);
 
-    const loadProjects = () => {
-        const projectsContainer = document.getElementById('projects-container');
-        for (const project of projectsData) {
-            const projectDiv = document.createElement('div');
-            projectDiv.classList.add('project');
+    if (!response.ok) {
+        throw new Error(`Failed to fetch repositories: ${response.status}`);
+    }
 
-            projectDiv.innerHTML = `
+    return response.json();
+};
+
+const projectsContainer = document.getElementById('projects-container');
+
+const loadProjects = (projects) => {
+    for (const project of projects) {
+        const imageUrl = project.hasImage ? `${API_BASE_URL}/${project._id}/image` : null;
+        const demoUrl = project.hasDemo ? `${API_BASE_URL}/${project._id}/demo` : null;
+        const imagePreview = project.hasImage ? `background-image: url('${imageUrl}');` : '';
+        const demoPreview = project.hasDemo ? `<img src="${demoUrl}" alt="${project.name} demo">` : '';
+        const projectDiv = document.createElement('div');
+        projectDiv.classList.add('project');
+
+        projectDiv.innerHTML = `
             <div class="project-container">
-                <div class="project-img-preview" style="background-image: url('${project.image}');"></div>
+                <div class="project-img-preview" style="${imagePreview}"></div>
                     <div class="project-title-container">
                         <span>${project.name}</span>
                     <button type="button" class="project-details-button">ver detalhes</button>
                 </div>
             </div>
             `;
-            projectsContainer.appendChild(projectDiv);
+        projectsContainer.appendChild(projectDiv);
 
-            projectDiv.querySelector('.project-details-button').addEventListener('click', () => {
-                const modal = document.getElementById('project-details-modal');
+        projectDiv.querySelector('.project-details-button').addEventListener('click', () => {
+            const modal = document.getElementById('project-details-modal');
 
-                modal.innerHTML = `
+            modal.innerHTML = `
                     <div class="close-modal-container">
                         <div class="close-modal">
                             <div class="bar"></div>
@@ -80,7 +65,7 @@ O design foi feito aplicando o conceito de mobile first, priorizando a experiên
                             </div>
                             <div class="details-right">
                                 <div class="project-details__demo">
-                                    <img id="demo-preview" src="${project.demo}" alt="">
+                                    ${demoPreview}
                                 </div>
                                 <div class="project-details__actions">
                                     <a href="${project.deployUrl}" target="_blank">
@@ -99,13 +84,46 @@ O design foi feito aplicando o conceito de mobile first, priorizando a experiên
                     </div>
                 `;
 
-                modal.showModal();
+            modal.showModal();
 
-                modal.querySelector('.close-modal').addEventListener('click', () => {
-                    modal.close();
-                });
+            modal.querySelector('.close-modal').addEventListener('click', () => {
+                modal.close();
             });
+        });
+    }
+};
+
+const loadMoreButton = document.getElementById('load-more-button');
+
+const updateLoadMoreButton = (response) => {
+    if (response.data.length >= response.totalRepos) {
+        loadMoreButton.style.display = 'none';
+    } else {
+        loadMoreButton.style.display = 'block';
+    }
+};
+
+loadMoreButton.addEventListener('click', async () => {
+    limit += 3;
+
+    try {
+        const response = await apiFetch();
+        if (response.data.length >= response.totalRepos) {
+            loadMoreButton.style.display = 'none';
         }
-    };
-    loadProjects();
+        projectsContainer.innerHTML = '';
+        loadProjects(response.data);
+    } catch (error) {
+        console.error('Error loading more projects:', error);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await apiFetch();
+        loadProjects(response.data);
+        updateLoadMoreButton(response);
+    } catch (error) {
+        console.error('Error loading projects: ', error);
+    }
 });
