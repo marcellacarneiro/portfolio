@@ -293,10 +293,14 @@ header .container {
     padding: 4px;
     justify-self: center;
     border-radius: 0.75rem;
-    transition: color 0.4s, transform 0.3s ease;
+    transition:
+        color 0.4s,
+        transform 0.3s ease;
     position: relative;
     border: 1.35px solid transparent;
-    background: linear-gradient(#0a0104, #0a0104) padding-box, var(--gradient) border-box;
+    background:
+        linear-gradient(#0a0104, #0a0104) padding-box,
+        var(--gradient) border-box;
     box-shadow: -9px 8px 0px 0px rgba(230, 52, 98, 0.15);
 }
 
@@ -336,6 +340,7 @@ header .container {
 .project span,
 button {
     color: var(--light);
+    font-family: 'Roboto Mono';
 }
 
 .project span {
@@ -476,6 +481,13 @@ dialog {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    font-family: 'Roboto Mono';
+}
+
+.project-details__text h3,
+.project-details__text pre,
+.project-details__text p {
+    font-family: 'Roboto Mono';
 }
 
 .project-details__text h3 {
@@ -526,7 +538,7 @@ dialog {
     border: 1.5px solid var(--light);
     color: var(--light);
     border-radius: 20px;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 0.6rem;
     cursor: pointer;
     font-size: 0.75rem;
     width: 100%;
