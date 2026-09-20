@@ -351,6 +351,7 @@ button {
     max-width: 50%;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .project button {
@@ -485,9 +486,12 @@ dialog {
 }
 
 .project-details__text h3,
-.project-details__text pre,
 .project-details__text p {
     font-family: 'Roboto Mono';
+}
+
+.project-details__text pre {
+    letter-spacing: 0.7px;
 }
 
 .project-details__text h3 {
