@@ -26,10 +26,10 @@ const projectsContainer = document.getElementById('projects-container');
 
 const loadProjects = (projects) => {
     for (const project of projects) {
-        const imageUrl = project.hasImage ? `${API_BASE_URL}/${project._id}/image` : null;
-        const demoUrl = project.hasDemo ? `${API_BASE_URL}/${project._id}/demo` : null;
-        const imagePreview = project.hasImage ? `background-image: url('${imageUrl}');` : '';
-        const demoPreview = project.hasDemo ? `<img src="${demoUrl}" alt="${project.name} demo">` : '';
+        const imageUrl = project.image ? project.image : null;
+        const demoUrl = project.demo ? project.demo : null;
+        const imagePreview = imageUrl ? `background-image: url('${imageUrl}');` : '';
+        const demoPreview = demoUrl ? `<img src="${demoUrl}" alt="${project.name} demo">` : '';
         const projectDiv = document.createElement('div');
         projectDiv.classList.add('project');
 
