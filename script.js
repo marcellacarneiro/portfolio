@@ -47,6 +47,19 @@ const loadProjects = (projects) => {
         projectDiv.querySelector('.project-details-button').addEventListener('click', () => {
             const modal = document.getElementById('project-details-modal');
 
+            const accessDeployBtn = project.deployUrl
+                ? `<a href="${project.deployUrl}" target="_blank">
+                     <button type="button">acessar projeto</button>
+                    </a>` : '';
+            const accessGithubBtn = project.githubUrl
+                ? `<a href="${project.githubUrl}" target="_blank">
+                     <button type="button">acessar repositório</button>
+                    </a>` : '';
+            const accessFigmaBtn = project.figmaUrl
+                ? `<a href="${project.figmaUrl}" target="_blank">
+                     <button type="button">acessar protótipo</button>
+                    </a>` : '';
+
             modal.innerHTML = `
                     <div class="close-modal-container">
                         <div class="close-modal">
@@ -68,15 +81,9 @@ const loadProjects = (projects) => {
                                     ${demoPreview}
                                 </div>
                                 <div class="project-details__actions">
-                                    <a href="${project.deployUrl}" target="_blank">
-                                        <button type="button">acessar projeto</button>
-                                    </a>
-                                    <a href="${project.githubUrl}" target="_blank">
-                                        <button type="button">acessar repositório</button>
-                                    </a>
-                                    <a href="${project.figmaUrl}" target="_blank">
-                                        <button type="button">acessar protótipo</button>
-                                    </a>
+                                    ${accessDeployBtn}
+                                    ${accessGithubBtn}
+                                    ${accessFigmaBtn}
                                 </div>
                                 </div>
                             </div>
