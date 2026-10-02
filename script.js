@@ -9,7 +9,7 @@ function toggleMenu() {
     }
 }
 
-const API_BASE_URL = 'https://git-repos-api-beta.vercel.app/api/repos';
+const API_BASE_URL = 'https://api-git-repos.vercel.app/api/repos';
 let limit = window.innerWidth < 768 ? 3 : 6;
 
 const apiFetch = async () => {
